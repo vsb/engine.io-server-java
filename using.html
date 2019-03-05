@@ -91,6 +91,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#jetty-server">Jetty server</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#async-polling">Async Polling</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
@@ -352,6 +353,13 @@ Then, the following code can be used to listen for WebSocket connections:</p>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="async-polling">
+<h2>Async Polling<a class="headerlink" href="#async-polling" title="Permalink to this headline">¶</a></h2>
+<p>To enable async polling, mark the servlet with <code class="docutils literal notranslate"><span class="pre">asyncSupported</span></code> set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+This can be done with annotations as <code class="docutils literal notranslate"><span class="pre">&#64;WebServlet(value</span> <span class="pre">=</span> <span class="pre">&quot;/engine.io/*&quot;,</span> <span class="pre">asyncSupported</span> <span class="pre">=</span> <span class="pre">true)</span></code>.
+Or with XML as <code class="docutils literal notranslate"><span class="pre">&lt;async-supported&gt;true&lt;/async-supported&gt;</span></code>.
+Enabling async is recommended as the server is bombarded with GET requests if async is disabled.</p>
 </div>
 </div>
 
