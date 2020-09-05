@@ -14,3 +14,6 @@
 .DS_Store
 target/
 node_modules/
+engine.io-server/.settings/org.eclipse.jdt.core.prefs
+engine.io-server/.project
+engine.io-server/.classpath
