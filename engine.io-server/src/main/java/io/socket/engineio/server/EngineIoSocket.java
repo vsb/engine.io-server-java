@@ -43,6 +43,7 @@ public final class EngineIoSocket extends Emitter {
     private ReadyState mReadyState;
     private Transport mTransport;
     private AtomicBoolean mUpgrading = new AtomicBoolean(false);
+    private HttpServletRequest request;
 
     EngineIoSocket(Object lockObject, String sid, EngineIoServer server, EngineIoSocketTimeoutHandler pingTimeoutHandler) {
         mLockObject = lockObject;
@@ -119,6 +120,7 @@ public final class EngineIoSocket extends Emitter {
      * @throws IOException On IO error.
      */
     void onRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        this.request = request;
         mTransport.onRequest(request, response);
 
         if (mUpgrading.get() && mTransport.isWritable() && mWriteBuffer.isEmpty())
@@ -324,5 +326,9 @@ public final class EngineIoSocket extends Emitter {
                     mServer.getOptions().getPingInterval() + mServer.getOptions().getPingTimeout(),
                     TimeUnit.MILLISECONDS);
         }
+    }
+    
+    public HttpServletRequest getRequest() {
+        return request;
     }
 }
