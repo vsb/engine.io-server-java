@@ -44,6 +44,7 @@ public final class EngineIoSocket extends Emitter {
     private Transport mTransport;
     private AtomicBoolean mUpgrading = new AtomicBoolean(false);
     private HttpServletRequest request;
+    private long account;
 
     EngineIoSocket(Object lockObject, String sid, EngineIoServer server, EngineIoSocketTimeoutHandler pingTimeoutHandler) {
         mLockObject = lockObject;
@@ -330,5 +331,13 @@ public final class EngineIoSocket extends Emitter {
     
     public HttpServletRequest getRequest() {
         return request;
+    }
+    
+    public void setAccount(long account) {
+        this.account = account;
+    }
+    
+    public long getAccount() {
+        return account;
     }
 }
