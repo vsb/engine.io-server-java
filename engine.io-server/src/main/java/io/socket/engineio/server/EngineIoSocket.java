@@ -46,6 +46,7 @@ public final class EngineIoSocket extends Emitter {
     private HttpServletRequest request;
     private long account;
     private long room;
+    private long time;
 
     EngineIoSocket(Object lockObject, String sid, EngineIoServer server, EngineIoSocketTimeoutHandler pingTimeoutHandler) {
         mLockObject = lockObject;
@@ -55,6 +56,7 @@ public final class EngineIoSocket extends Emitter {
         mPingTimeoutHandler = pingTimeoutHandler;
 
         mReadyState = ReadyState.OPENING;
+        time = System.currentTimeMillis();
     }
 
     /**
@@ -349,4 +351,8 @@ public final class EngineIoSocket extends Emitter {
     public long getRoom() {
         return room;
     }    
+    
+    public long getTime() {
+        return time;
+    }
 }
