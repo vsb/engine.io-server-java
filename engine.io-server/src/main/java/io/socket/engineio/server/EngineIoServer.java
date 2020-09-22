@@ -154,6 +154,7 @@ public final class EngineIoServer extends Emitter {
             } else {
                 Transport transport = new WebSocket(webSocket);
                 socket.upgrade(transport);
+                System.out.println("upgrade socket " + sid + " to websocket");
             }
         } else {
             handshakeWebSocket(webSocket);
